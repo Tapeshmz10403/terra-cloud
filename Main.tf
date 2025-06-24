@@ -5,13 +5,6 @@ terraform {
       version = "3.4.0"
     }
   }
-
-  Cloud {
-    organization = "TTerra"
-    workspaces {
-      name = "TerraCloud"
-    }
-  }
 }
 
 provider "azuread" {
