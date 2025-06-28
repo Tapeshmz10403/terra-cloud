@@ -1,9 +1,9 @@
-terraform {
-  cloud {
-    organization = "TTERRA"
+# terraform {
+#   cloud {
+#     organization = "TTERRA"
 
-    workspaces {
-      name = "terra-cloud"
-    }
-  }
-}
+#     workspaces {
+#       name = "terra-cloud"
+#     }
+#   }
+# }

@@ -1,42 +1,11 @@
-provider "azurerm" {
-  features {}
-}
+module "avd_host_pools" {
+  source = "git::https://github.com/Tapeshmz10403/terraform-azure-avd-virtual-desktop-host-pool.git?ref=v1.0.2"
 
-resource "azurerm_resource_group" "rg" {
-  name     = var.resource_group_name
-  location = var.location
-}
+  resource_group_name = var.resource_group_name
+  location            = var.location
+  vnet_name           = var.vnet_name
+  vnet_address_space  = var.vnet_address_space
+  subnets             = var.subnets
+  host_pools          = var.host_pools
 
-resource "azurerm_virtual_desktop_host_pool" "host_pool" {
-  name                     = var.host_pool_name
-  location                 = azurerm_resource_group.rg.location
-  resource_group_name      = azurerm_resource_group.rg.name
-  type                     = "Pooled"
-  maximum_sessions_allowed = 10
-  load_balancer_type       = "BreadthFirst"
-  friendly_name            = "TestHostPool"
-  validate_environment     = true
 }
-
-resource "azurerm_virtual_desktop_workspace" "workspace" {
-  name                = var.workspace_name
-  location            = azurerm_resource_group.rg.location
-  resource_group_name = azurerm_resource_group.rg.name
-  friendly_name       = "TestWorkspace"
-  description         = "A test AVD workspace"
-}
-
-resource "azurerm_virtual_desktop_application_group" "app_group" {
-  name                = var.application_group_name
-  location            = azurerm_resource_group.rg.location
-  resource_group_name = azurerm_resource_group.rg.name
-  type                = "Desktop"
-  host_pool_id        = azurerm_virtual_desktop_host_pool.host_pool.id
-  friendly_name       = "TestDesktopAppGroup"
-}
-
-resource "azurerm_virtual_desktop_workspace_application_group_association" "assoc" {
-  workspace_id         = azurerm_virtual_desktop_workspace.workspace.id
-  application_group_id = azurerm_virtual_desktop_application_group.app_group.id
-}
-

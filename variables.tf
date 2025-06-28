@@ -1,24 +1,45 @@
+# Resource Group
 variable "resource_group_name" {
   description = "Name of the resource group"
-  default     = "avd-test-rg"
+  type        = string
 }
 
 variable "location" {
-  description = "Azure region"
-  default     = "East US"
+  description = "Azure regin for resources"
+  type        = string
+  default     = "easteurope"
 }
 
-variable "host_pool_name" {
-  description = "Name of the AVD host pool"
-  default     = "avd-test-hostpool"
+# Virtual Network
+variable "vnet_name" {
+  description = "Name of the virtual network"
+  type        = string
 }
 
-variable "workspace_name" {
-  description = "Name of the AVD workspace"
-  default     = "avd-test-workspace"
+variable "vnet_address_space" {
+  description = "Address space for the virtual network"
+  type        = list(string)
 }
 
-variable "application_group_name" {
-  description = "Name of the AVD application group"
-  default     = "avd-test-appgroup"
+# Subnets
+variable "Subnets" {
+  description = "Map of subnets with address prefixes"
+  type        = map(list(string))
+
 }
+
+#host pools
+variable "host_pools" {
+  description = "Configuration for multiple host pools"
+  type = map(object({
+    name                    = string
+    type                    = string
+    friendly_name           = string
+    validation_environment  = bool
+    maximum_sessions        = number
+    workspace_description   = string
+    workspace_friendly_name = string
+  }))
+
+}
+
