@@ -1,1 +1,3 @@
 .terraform/
+.terraform-azure-avd-virtual-desktop-host-pool/
+.github/
