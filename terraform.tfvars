@@ -1,4 +1,4 @@
-resource_group_name = "rg_avd_pool"
+resource_group_name = "rg_avd_enterprise"
 location            = "easteurope"
 vnet_name           = "avd-pool-vnet"
 vnet_address_space  = ["10.0.0.0/16"]
