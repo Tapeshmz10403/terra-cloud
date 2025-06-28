@@ -5,7 +5,9 @@ module "avd_host_pools" {
   location            = var.location
   vnet_name           = var.vnet_name
   vnet_address_space  = var.vnet_address_space
-  subnets             = var.subnets
+  subnets             = var.Subnets
   host_pools          = var.host_pools
 
 }
+
+
