@@ -21,6 +21,7 @@ host_pools = {
     maximum_sessions        = 10
     workspace_description   = "workspace for department 1"
     workspace_friendly_name = "dept1 workspace"
+    validation_environment  = false
   }
   "department2" = {
     name                    = "avd_host_pool_dept2"
@@ -30,6 +31,7 @@ host_pools = {
     maximum_sessions        = 10
     workspace_description   = "workspace for department 2"
     workspace_friendly_name = "dept2 workspace"
+    validation_environment  = false
   }
 
 }
